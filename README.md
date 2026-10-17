@@ -1,101 +1,85 @@
 # 🎬 Netflix Movies & TV Shows Data Cleaning & Exploratory Data Analysis (EDA)
 
-## 📌 Project Overview
+**AnalystLab Africa Data Analytics Internship | Week 2**
+Prepared by **Zainab Danjuma**
 
-This project was completed as part of the **AnalystLab Africa Data Analytics Internship Program (Week 1–2)**.
+## Overview
 
-The objective was to clean, validate, and explore the Netflix Movies & TV Shows dataset using Python, transforming raw data into an analysis-ready dataset and uncovering meaningful insights through Exploratory Data Analysis (EDA).
+This project cleans, validates and explores the Netflix Movies & TV Shows dataset to turn raw catalogue data into an analysis-ready dataset and to uncover insights about content mix, growth, geography, audience ratings and genres.
 
----
+## Business Problem
 
-## 📂 Dataset
+Streaming catalogue data is messy: directors, casts and countries are often missing, dates are stored as text, and fields mix formats. Before any content-strategy question can be answered (What is the Movie/TV Show mix? How fast did the library grow? Which markets and genres lead? Who is the content for?), the data has to be cleaned and validated.
 
-**Dataset:** Netflix Movies & TV Shows
+## Dataset
 
-Source: https://www.kaggle.com/datasets/shivamb/netflix-shows
+| Item | Detail |
+|---|---|
+| File | `netflix_titles.csv` |
+| Raw size | 8,807 rows x 12 columns |
+| Cleaned size | 8,790 rows x 12 columns |
+| Primary key | `show_id` |
+| Columns | show_id, type, title, director, cast, country, date_added, release_year, rating, duration, listed_in, description |
 
----
+## Tools
 
-## 🛠 Tools & Libraries
+Python, Pandas, NumPy, Matplotlib, Seaborn, Jupyter Notebook
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
+## Data Cleaning
 
----
+| Issue | Action |
+|---|---|
+| Missing `director` (29.91%), `country` (9.44%), `cast` (9.37%) | Filled with `"Unknown"` |
+| Missing `date_added` (10), `rating` (4), `duration` (3) | Rows removed (17 rows in total) |
+| Duplicate records | None found |
+| Column names | Stripped, lowercased, spaces replaced with underscores |
+| `date_added` stored as text | Converted to `datetime64` with `pd.to_datetime()` |
+| Validation | Checked type, rating, duration and release year; no invalid values |
 
-## 📋 Project Tasks
+## Key Insights
 
-### Dataset Understanding
-- Loaded and explored the dataset.
-- Identified data types and dataset dimensions.
-- Examined numerical and categorical features.
-- Verified the primary key.
+- Movies make up about 70% of the catalogue (6,126 titles) and TV Shows about 30% (2,664) because Netflix built breadth through films first.
+- Additions rose from 82 titles in 2015 to a peak of 2,016 in 2019, reflecting rapid global expansion; 2021 is a partial year (data ends 25 September 2021).
+- The United States (3,680), India (1,046) and the United Kingdom (803) are the top content-producing countries.
+- TV-MA and TV-14 cover about 61% of titles because the platform is aimed mainly at adult and teen viewers; content for young children is about 10%.
+- International Movies (2,752), Dramas (2,426) and Comedies (1,674) are the top genres.
 
-### Data Cleaning
-- Handled missing values.
-- Verified duplicate records.
-- Standardized column names.
-- Converted date columns to datetime format.
-- Validated data quality and consistency.
+## Recommendations
 
-### Exploratory Data Analysis
-- Summary statistics
-- Movies vs TV Shows distribution
-- Content added by year
-- Top content-producing countries
-- Most common ratings
-- Most common genres
+1. Continue investing in international content, as it remains one of the platform's strongest categories.
+2. Expand investment in emerging markets to diversify the content library.
+3. Balance mature-rated content (about 61% of titles) with family and kids programming (about 10%) to appeal to a wider subscriber base.
 
-### Data Visualization
-- Bar Charts
-- Line Chart
-- Horizontal Bar Chart
+## Next Steps
 
----
+- Track additions over a full 2021, since the data ends in September.
+- Pair this catalogue data with viewership data to find expansion opportunities.
 
-## 📊 Key Findings
+## Limitations
 
-- Movies account for approximately 70% of Netflix's content library.
-- Netflix experienced rapid content growth between 2017 and 2020, with 2019 recording the highest number of additions.
-- The United States contributes the largest number of titles, followed by India and the United Kingdom.
-- TV-MA is the most common audience rating.
-- International Movies and Dramas are the most represented genres.
+- Catalogue snapshot only: no viewership, scores or revenue, so popularity cannot be measured.
+- 2021 is a partial year.
+- Multi-country and multi-genre titles are counted once per tag.
 
----
-## 💡 Recommendations
+## Repository Structure
 
-Based on the analysis, the following recommendations are suggested:
+```
+Netflix-EDA/
+|-- Data/
+|   `-- netflix_titles.csv
+|-- Netflix_Data_Cleaning_EDA.ipynb
+|-- Netflix_Cleaned.csv
+|-- Netflix_EDA_Report.pdf
+`-- README.md
+```
 
-- Continue investing in international productions to strengthen Netflix's global content portfolio.
-- Expand family-friendly and children's content to attract a broader audience.
-- Increase content production in emerging markets to improve regional representation.
-- Maintain investment in high-performing genres such as International Movies, Dramas, and Comedies while exploring underrepresented genres.
-- Use audience rating trends to balance mature content with programming suitable for all age groups.
+## How to Run
 
----
+1. Clone the repository.
+2. Install the libraries: `pip install pandas numpy matplotlib seaborn jupyter`
+3. Update the file path in the notebook's load cell to point to `Data/netflix_titles.csv`.
+4. Run all cells in `Netflix_Data_Cleaning_EDA.ipynb`.
 
-## 📁 Repository Structure
+## Author
 
-📂 Netflix-EDA-Python
-
-├── data/
-
-├── cleaned_data/
-
-├── notebooks/
-
-├── visualizations/
-
-├── report/
-
-└── README.md
-
----
-
-## 👩🏽‍💻 Author
-
-**Danjuma Zainab**
-
-Aspiring Data Analyst passionate about transforming data into actionable insights using Python, Excel, SQL, and Power BI.
+**Zainab Danjuma**: Data Analytics intern, AnalystLab Africa
